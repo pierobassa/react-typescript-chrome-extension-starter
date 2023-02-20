@@ -10,7 +10,7 @@ module.exports = {
         popup: path.resolve('src/popup/index.tsx'),
         options: path.resolve('src/options/index.tsx'),
         background: path.resolve('src/background/background.ts'),
-        contentScript: path.resolve('src/contentScript/contentScript.ts'),
+        contentScript: path.resolve('src/contentScript/index.tsx'),
         newTab: path.resolve('src/tabs/index.tsx'),
     },
     module: {
@@ -72,7 +72,9 @@ module.exports = {
     },
     optimization: { 
         splitChunks: { // this plugin solves code duplication, which can lead to redundant content loaded in the dist.
-            chunks: 'all',
+            chunks(chunk) {
+                return chunk.name !== 'contentScript'; //We are splitting chunks but not for contentScript because it is applied to each DOM of a website we visit which matches the 'matches' value of the manifest.json
+            }
         }
     }
 }

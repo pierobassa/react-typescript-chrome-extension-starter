@@ -5,7 +5,20 @@
 - [x] Webpack Compatible
 - [x] TailwindCSS 3.0 Compatible
 
-Subscribe to my youtube channel
-https://bit.ly/manshu
+## Installation
+```
+npm i
+```
 
-<a href="https://www.buymeacoffee.com/batraio" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+# Build 
+Build and watch (DEV)
+```
+npm run watch
+```
+
+Build and watch (PROD)
+```
+npm run build
+```
+
+

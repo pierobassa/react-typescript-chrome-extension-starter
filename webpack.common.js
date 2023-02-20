@@ -16,7 +16,7 @@ module.exports = {
     module: {
         rules: [
             {
-                use: 'ts-loader',
+                use: 'ts-loader', //Loader for typescript files into Javascript files. (Transpile)
                 test: /\.tsx?$/,
                 exclude: /node_modules/,
             },
@@ -43,7 +43,7 @@ module.exports = {
             },
             {
                 type: 'assets/resource',
-                test: /\.(png|jpg|jpeg|gif|woff|woff2|tff|eot|svg)$/,
+                test: /\.(png|jpg|jpeg|gif|woff|woff2|tff|eot|svg)$/, //Importing images
             },
         ]
     },
@@ -53,8 +53,8 @@ module.exports = {
         }),
         new CopyPlugin({
             patterns: [{
-                from: path.resolve('src/static'),
-                to: path.resolve('dist')
+                from: path.resolve('src/static'), //Copies from src/static
+                to: path.resolve('dist') //into /dist
             }]
         }),
         ...getHtmlPlugins([
@@ -64,20 +64,20 @@ module.exports = {
         ])
     ],
     resolve: {
-        extensions: ['.tsx', '.js', '.ts']
+        extensions: ['.tsx', '.js', '.ts'] //File extensions to resolve
     },
     output: {
         filename: '[name].js',
         path: path.join(__dirname, 'dist')
     },
-    optimization: {
-        splitChunks: {
+    optimization: { 
+        splitChunks: { // this plugin solves code duplication, which can lead to redundant content loaded in the dist.
             chunks: 'all',
         }
     }
 }
 
-function getHtmlPlugins(chunks) {
+function getHtmlPlugins(chunks) { //For each chunk return a HtmlPlugin object for that chunk
     return chunks.map(chunk => new HtmlPlugin({
         title: 'React Extension',
         filename: `${chunk}.html`,

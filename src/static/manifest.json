@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
-    "name": "react-boilerplate",
-    "description": "react-boilerplate for chrome extension",
+    "name": "Scrypt wallet",
+    "description": "Scrypt - the VechainTHOR wallet.",
     "version": "1.0.0",
     "action" : {
         "default_popup": "popup.html",
